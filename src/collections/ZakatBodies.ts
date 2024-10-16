@@ -1,12 +1,21 @@
 // File: zakatBodies.ts
-import { CollectionConfig } from 'payload/types';
+import { CollectionConfig } from 'payload';
+
+import { anyone } from '../access/anyone'
+import { authenticated } from '../access/authenticated'
 
 const ZakatBodies: CollectionConfig = {
   slug: 'zakat-bodies',
-  labels: {
-    singular: 'Zakat Body',
-    plural: 'Zakat Bodies',
+  access: {
+    create: authenticated,
+    delete: authenticated,
+    read: anyone,
+    update: authenticated,
   },
+  // labels: {
+  //   singular: 'Zakat Body',
+  //   plural: 'Zakat Bodies',
+  // },
   admin: {
     useAsTitle: 'title',
   },
@@ -26,7 +35,7 @@ const ZakatBodies: CollectionConfig = {
     {
       name: 'useExternalUrl',
       label: 'Use External URL',
-      type: 'checkbox',
+      type: 'text',
       defaultValue: false,
     },
     {
@@ -36,13 +45,85 @@ const ZakatBodies: CollectionConfig = {
     },
     {
       name: 'agencyCodeZakatFitrah',
-      label: 'Agency Code Zakat Fitrah',
-      type: 'text',
+      type: 'select',
+      defaultValue: 'KTNIK',
+      label: 'Agency Code (Zakat Fitrah)',
+      options: [
+        {
+          label: 'KTNIK - Kelantan',
+          value: 'KTNIK',
+        },
+        {
+          label: 'JHRIK - Johor',
+          value: 'JHRIK',
+        },
+        {
+          label: 'NSNIK - N9',
+          value: 'NSNIK',
+        },
+        {
+          label: 'SBHIK - Sabah',
+          value: 'SBHIK',
+        },
+        {
+          label: 'SWHIK - Sarawak',
+          value: 'SWHIK',
+        },
+        {
+          label: 'PPZMAIWPIK - PPZMAIWP',
+          value: 'PPZMAIWPIK',
+        },
+        {
+          label: 'PLSIK - Perlis',
+          value: 'PLSIK',
+        },
+        {
+          label: 'PNGIK - Pulau Pinang',
+          value: 'PNGIK',
+        },
+      ],
+      required: true,
     },
     {
       name: 'agencyCodeZakatOther',
-      label: 'Agency Code Zakat Other',
-      type: 'text',
+      type: 'select',
+      defaultValue: 'KTNIK',
+      label: 'Agency Code (Zakat Other)',
+      options: [
+        {
+          label: 'KTNIK - Kelantan',
+          value: 'KTNIK',
+        },
+        {
+          label: 'JHRIK - Johor',
+          value: 'JHRIK',
+        },
+        {
+          label: 'NSNIK - N9',
+          value: 'NSNIK',
+        },
+        {
+          label: 'SBHIK - Sabah',
+          value: 'SBHIK',
+        },
+        {
+          label: 'SWHIK - Sarawak',
+          value: 'SWHIK',
+        },
+        {
+          label: 'PPZMAIWPIK - PPZMAIWP',
+          value: 'PPZMAIWPIK',
+        },
+        {
+          label: 'PLSIK - Perlis',
+          value: 'PLSIK',
+        },
+        {
+          label: 'PNGIK - Pulau Pinang',
+          value: 'PNGIK',
+        },
+      ],
+      required: true,
     },
     {
       name: 'logo',
